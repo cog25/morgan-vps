@@ -1,4 +1,4 @@
-version: "3"
+version: "3.7"
 
 services:
   caddy:
@@ -9,8 +9,8 @@ services:
       - "443:443"
       - "443:443/udp"
     volumes:
-      - $PWD/caddy/Caddyfile:/etc/caddy/Caddyfile
-      - $PWD/caddy/site:/srv
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy/site:/srv
       - caddy_data:/data
       - caddy_config:/config
 
