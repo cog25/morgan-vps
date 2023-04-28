@@ -18,7 +18,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.codeserver.rule=Host(`cog.city`)"
-      # - "traefik.http.routers.codeserver.entrypoints=web"
+      - "traefik.http.middlewares.test-auth.basicauth.users=test:$$apr1$$H6uskkkW$$IgXLP6ewTrSuBkTrqE8wj/,test2:$$apr1$$d9hr9HBB$$4HxwgUir3HP4EsggP/QNo0"
+
     ports:
       - 8443:8443
     restart: unless-stopped
