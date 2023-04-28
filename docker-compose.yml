@@ -15,6 +15,10 @@ services:
       - DEFAULT_WORKSPACE=/config/workspace #optional
     volumes:
       - ./config:/config
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.codeserver.rule=Host(`cog.city`)"
+      - "traefik.http.routers.codeserver.entrypoints=web"
     ports:
       - 8443:8443
     restart: unless-stopped
