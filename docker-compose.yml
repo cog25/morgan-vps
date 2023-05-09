@@ -21,7 +21,7 @@ services:
     environment:
       WEBSOCKET_ENABLED: "true"  # Enable WebSocket notifications.
     volumes:
-      - ./vw-data:/data
+      - ./data-vw:/data
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.codeserver.rule=Host(`vw.cog.city`)"
