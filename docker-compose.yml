@@ -25,6 +25,6 @@ services:
       - ./data-vw:/data
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.codeserver.rule=Host(`vw.cog.city`)"
+      - "traefik.http.routers.vaultwarden.rule=Host(`vw.cog.city`)"
       - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
 
