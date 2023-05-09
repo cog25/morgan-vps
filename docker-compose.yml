@@ -13,3 +13,17 @@ services:
     volumes:
       # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock
+
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: always
+    environment:
+      WEBSOCKET_ENABLED: "true"  # Enable WebSocket notifications.
+    volumes:
+      - ./vw-data:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.codeserver.rule=Host(`vw.cog.city`)"
+      - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
+
