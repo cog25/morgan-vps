@@ -1,29 +1,5 @@
 version: "3"
 services:
-  code-server:
-    image: lscr.io/linuxserver/code-server:latest
-    container_name: code-server
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
-      # - PASSWORD=password #optional
-      # - HASHED_PASSWORD= #optional
-      # - SUDO_PASSWORD=password #optional
-      # - SUDO_PASSWORD_HASH= #optional
-      # - PROXY_DOMAIN=code-server.my.domain #optional
-      - DEFAULT_WORKSPACE=/config/workspace #optional
-    volumes:
-      - ./config:/config
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.codeserver.rule=Host(`cog.city`)"
-      - "traefik.http.middlewares.test-auth.basicauth.users=test:$$apr1$$H6uskkkW$$IgXLP6ewTrSuBkTrqE8wj/,test2:$$apr1$$d9hr9HBB$$4HxwgUir3HP4EsggP/QNo0"
-
-    ports:
-      - 8443:8443
-    restart: unless-stopped
-  
   reverse-proxy:
     # The official v2 Traefik docker image
     image: traefik:v2.10
