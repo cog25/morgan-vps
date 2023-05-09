@@ -20,6 +20,7 @@ services:
     restart: always
     environment:
       WEBSOCKET_ENABLED: "true"  # Enable WebSocket notifications.
+      SIGNUPS_ALLOWED: "false"
     volumes:
       - ./data-vw:/data
     labels:
