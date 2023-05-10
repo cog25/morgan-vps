@@ -26,5 +26,6 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.vaultwarden.rule=Host(`vw.cog.city`)"
-      - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
+      - "traefik.http.middlewares.vaultwarden.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.vaultwarden.redirectscheme.permanent=true"
 
