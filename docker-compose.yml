@@ -24,6 +24,7 @@ services:
       - APP_GID=1000
       - APP_UMASK=007                      
       - TZ=Asia/Seoul             
+      - DIGEST_AUTH_REALM=WebDav                                      
     volumes:
       - ./data-minecraft:/var/webdav/data
     labels:
