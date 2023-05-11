@@ -13,18 +13,22 @@ services:
       - ./data-minecraft:/data
     restart: always
     
+
   webdav:
-    container_name: mcwebdav
-    image: derkades/webdav
-    volumes:
-      - ./data-mc:/data
+    container_name: webdav
+    image: "chonjay21/webdav:latest"
     environment:
-      - USERNAME=${WD_USERNAME}
-      - PASSWORD=${WD_PASSWORD}
-      - TZ=Asia/Seoul
+      - APP_USER_NAME=${WD_USERNAME}
+      - APP_USER_PASSWD=${WD_PASSWORD}
+      - APP_UID=1000
+      - APP_GID=1000
+      - APP_UMASK=007                      
+      - TZ=Asia/Seoul             
+    volumes:
+      - ./data-minecraft:/var/webdav/data
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.mcwebdav.rule=Host(`mcwd.cog.city`)"
+      - "traefik.http.routers.mcwebdav.rule=Host(`wd.mc.cog.city`)"
       - "traefik.http.middlewares.mcwebdav.redirectscheme.scheme=https"
       - "traefik.http.middlewares.mcwebdav.redirectscheme.permanent=true"
 
