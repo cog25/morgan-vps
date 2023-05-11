@@ -22,17 +22,10 @@ services:
       - PASSWORD=${WD_PASSWORD}
       - TZ=Asia/Seoul
     labels:
+      - "traefik.enabled=true"
       - "traefik.http.routers.webdav.rule=Host(`wd.mc.cog.city`)"
-      - traefik.http.middlewares.webdav.headers.forcestsheader=true
-      - traefik.http.middlewares.webdav.headers.sslRedirect=true
-      - traefik.http.middlewares.webdav.headers.STSPreload=true
-      - traefik.http.middlewares.webdav.headers.ContentTypeNosniff=true
-      - traefik.http.middlewares.webdav.headers.BrowserXssFilter=true
-      - traefik.http.middlewares.webdav.headers.STSIncludeSubdomains=true
-      - traefik.http.middlewares.webdav.headers.stsSeconds=63072000
-      - traefik.http.middlewares.webdav.headers.frameDeny=true
-      - traefik.http.middlewares.webdav.headers.browserXssFilter=true
-      - traefik.http.middlewares.webdav.headers.contentTypeNosniff=true
+      - "traefik.http.middlewares.webdav.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.webdav.redirectscheme.permanent=true"
 
 
 
