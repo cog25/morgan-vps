@@ -1,6 +1,6 @@
 version: "3"
 services:
-   mc:
+   minecraft:
     image: itzg/minecraft-server
     ports:
       - "25565:25565"
@@ -10,7 +10,7 @@ services:
       VERSION: "1.19.1"
       OPS: "cog25,june2dg"
     volumes:
-      - ./data-mc:/data
+      - ./data-minecraft:/data
   restart: always
   webdav:
     container_name: webdav
