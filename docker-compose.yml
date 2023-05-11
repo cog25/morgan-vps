@@ -22,20 +22,17 @@ services:
       - PASSWORD=${WD_PASSWORD}
       - TZ=Asia/Seoul
     labels:
-      - traefik.backend=webdav                                                                                               
-      - traefik.frontend.rule=Host:wd.mc.cog.city
-      - traefik.enable=true
-      # Adding in secure headers
-      - traefik.http.middlewares.securedheaders.headers.forcestsheader=true
-      - traefik.http.middlewares.securedheaders.headers.sslRedirect=true
-      - traefik.http.middlewares.securedheaders.headers.STSPreload=true
-      - traefik.http.middlewares.securedheaders.headers.ContentTypeNosniff=true
-      - traefik.http.middlewares.securedheaders.headers.BrowserXssFilter=true
-      - traefik.http.middlewares.securedheaders.headers.STSIncludeSubdomains=true
-      - traefik.http.middlewares.securedheaders.headers.stsSeconds=63072000
-      - traefik.http.middlewares.securedheaders.headers.frameDeny=true
-      - traefik.http.middlewares.securedheaders.headers.browserXssFilter=true
-      - traefik.http.middlewares.securedheaders.headers.contentTypeNosniff=true
+      - "traefik.http.routers.webdav.rule=Host(`wd.mc.cog.city`)"
+      - traefik.http.middlewares.webdav.headers.forcestsheader=true
+      - traefik.http.middlewares.webdav.headers.sslRedirect=true
+      - traefik.http.middlewares.webdav.headers.STSPreload=true
+      - traefik.http.middlewares.webdav.headers.ContentTypeNosniff=true
+      - traefik.http.middlewares.webdav.headers.BrowserXssFilter=true
+      - traefik.http.middlewares.webdav.headers.STSIncludeSubdomains=true
+      - traefik.http.middlewares.webdav.headers.stsSeconds=63072000
+      - traefik.http.middlewares.webdav.headers.frameDeny=true
+      - traefik.http.middlewares.webdav.headers.browserXssFilter=true
+      - traefik.http.middlewares.webdav.headers.contentTypeNosniff=true
 
 
 
