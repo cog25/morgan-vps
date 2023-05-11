@@ -12,8 +12,9 @@ services:
     volumes:
       - ./data-minecraft:/data
     restart: always
+    
   webdav:
-    container_name: webdav
+    container_name: mcwebdav
     image: derkades/webdav
     volumes:
       - ./data-mc:/data
@@ -22,10 +23,10 @@ services:
       - PASSWORD=${WD_PASSWORD}
       - TZ=Asia/Seoul
     labels:
-      - "traefik.enabled=true"
-      - "traefik.http.routers.webdav.rule=Host(`wd.mc.cog.city`)"
-      - "traefik.http.middlewares.webdav.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.webdav.redirectscheme.permanent=true"
+      - "traefik.enable=true"
+      - "traefik.http.routers.mcwebdav.rule=Host(`mcwd.cog.city`)"
+      - "traefik.http.middlewares.mcwebdav.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.mcwebdav.redirectscheme.permanent=true"
 
 
 
