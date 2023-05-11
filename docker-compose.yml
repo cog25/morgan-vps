@@ -14,9 +14,9 @@ services:
     restart: always
   webdav:
     container_name: webdav
-    image: ugeek/webdav
+    image: derkades/webdav
     volumes:
-      - ./data-mc:/media
+      - ./data-mc:/data
     environment:
       - USERNAME=${WD_USERNAME}
       - PASSWORD=${WD_PASSWORD}
