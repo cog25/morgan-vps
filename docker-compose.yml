@@ -29,9 +29,9 @@ services:
       - ./data-minecraft/plugins:/var/webdav/data
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.mcwebdav.rule=Host(`wd.mc.cog.city`)"
-      - "traefik.http.middlewares.mcwebdav.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.mcwebdav.redirectscheme.permanent=true"
+      - "traefik.http.routers.webdav.rule=Host(`wd.mc.cog.city`)"
+      - "traefik.http.middlewares.webdav.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.webdav.redirectscheme.permanent=true"
 
 
 
