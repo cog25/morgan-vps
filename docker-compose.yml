@@ -26,7 +26,7 @@ services:
       - TZ=Asia/Seoul             
       - DIGEST_AUTH_REALM=WebDav                                      
     volumes:
-      - ./data-minecraft:/var/webdav/data
+      - ./data-minecraft/plugins:/var/webdav/data
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.mcwebdav.rule=Host(`wd.mc.cog.city`)"
