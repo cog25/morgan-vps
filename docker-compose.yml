@@ -14,7 +14,7 @@ services:
     restart: always
   webdav:
     container_name: webdav
-    image: ugeek/webdav:latest
+    image: ugeek/webdav
     volumes:
       - ./data-mc:/media
     environment:
