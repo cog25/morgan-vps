@@ -14,9 +14,7 @@ services:
     restart: always
   webdav:
     container_name: webdav
-    image: ugeek/webdav:arm      ### ex. arm image
-    ports:
-      - 80:80
+    image: ugeek/webdav:latest
     volumes:
       - ./data-mc:/media
     environment:
