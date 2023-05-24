@@ -1,6 +1,5 @@
 version: "3"
 services:
-  
   reverse-proxy:
     # The official v2 Traefik docker image
     image: traefik:v2.10
@@ -30,3 +29,24 @@ services:
       - "traefik.http.middlewares.vaultwarden.redirectscheme.scheme=https"
       - "traefik.http.middlewares.vaultwarden.redirectscheme.permanent=true"
 
+
+  codeserver:
+    image: lscr.io/linuxserver/code-server:latest
+    container_name: code-server
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Seoul
+      - HASHED_PASSWORD=${CS_HASHED_PASSWORD}
+      - SUDO_PASSWORD_HASH=${CS_HASHED_PASSWORD}
+      # - PROXY_DOMAIN=code-server.my.domain 
+      - DEFAULT_WORKSPACE=/config/workspace #optional
+    volumes:
+      - ./data-cs-config:/config
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.codeserver.rule=Host(`cs.cog.city`)"
+      - "traefik.http.middlewares.codeserver.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.codeserver.redirectscheme.permanent=true"
+    restart: unless-stopped
