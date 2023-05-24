@@ -1,40 +1,6 @@
 version: "3"
 services:
-  minecraft:
-    image: itzg/minecraft-server
-    ports:
-      - "25565:25565"
-    environment:
-      EULA: "TRUE"
-      TYPE: SPIGOT
-      VERSION: "1.19.1"
-      OPS: "cog25,june2dg"
-    volumes:
-      - ./data-minecraft:/data
-    restart: always
-    
-
-  webdav:
-    container_name: webdav
-    image: "chonjay21/webdav:latest"
-    environment:
-      - APP_USER_NAME=${WD_USERNAME}
-      - APP_USER_PASSWD=${WD_PASSWORD}
-      - APP_UID=1000
-      - APP_GID=1000
-      - APP_UMASK=007                      
-      - TZ=Asia/Seoul             
-      - DIGEST_AUTH_REALM=WebDav                                      
-    volumes:
-      - ./data-minecraft/plugins:/var/webdav/data
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.webdav.rule=Host(`wd.mc.cog.city`)"
-      - "traefik.http.middlewares.webdav.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.webdav.redirectscheme.permanent=true"
-
-
-
+  
   reverse-proxy:
     # The official v2 Traefik docker image
     image: traefik:v2.10
