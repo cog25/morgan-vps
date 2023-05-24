@@ -37,8 +37,8 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Seoul
-      - HASHED_PASSWORD=${CS_HASHED_PASSWORD}
-      - SUDO_PASSWORD_HASH=${CS_HASHED_PASSWORD}
+      - PASSWORD=${CS_PASSWORD}
+      - SUDO_PASSWORD=${CS_PASSWORD}
       # - PROXY_DOMAIN=code-server.my.domain 
       - DEFAULT_WORKSPACE=/config/workspace #optional
     volumes:
